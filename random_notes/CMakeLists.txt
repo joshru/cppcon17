@@ -3,5 +3,5 @@ project(cppcon17)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_subdirectory(random_notes)
-#add_subdirectory(best_practices)
+set(SOURCE_FILES notes_main.cc cust.h)
+add_executable(random_notes ${SOURCE_FILES})

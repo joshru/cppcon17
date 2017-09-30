@@ -3,7 +3,7 @@
 //
 
 #include <iostream>
-#include <experimental/string>
+#include <string>
 #include <experimental/string_view>
 #include <experimental/optional>
 #include "cust.h"
@@ -15,7 +15,7 @@ void wrapper(T&& arg) {
     std::forward<T>(arg);
 }
 
-auto optional_params(string_view str, optional<int> start, optional<int> end) {
+auto optional_params(string_view str, const optional<int>& start, const optional<int>& end) {
     auto s = start.value_or(0);
     auto e = end.value_or(str.size());
     std::cout << "String: " << str << " Opt 1: " << start.value_or(0) << " Opt 2: " << end.value_or(0) << std::endl;
@@ -23,7 +23,7 @@ auto optional_params(string_view str, optional<int> start, optional<int> end) {
 
 
 auto auto_return() {
-    return 44;
+    return 44; //neat
 }
 
 int main() {
@@ -35,8 +35,6 @@ int main() {
     // std::optional examples
     optional_params("test with provided optionals: ", 4, 5);
     optional_params("test without provided optionals: ", nullopt, nullopt);
-
-
 
     Cust test {"hello", "world", 2};
 
